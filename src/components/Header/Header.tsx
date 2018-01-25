@@ -1,37 +1,37 @@
 import * as React from 'react';
+import NavLink from 'src/components/Header/NavLink';
 
-class Header extends React.Component {
+export interface HeaderState {
+    toggle: boolean;
+}
+
+class Header extends React.Component<{}, HeaderState> {
+
+    state = {
+        toggle: false,
+    } as HeaderState;
+
+    toggleHeader() {
+        this.setState({toggle: !this.state.toggle});
+    }
+
     render() {
         return (
-            <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-                <button
-                        className="navbar-toggler navbar-toggler-right"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="#">Navbar</a>
+                <button 
+                    className="navbar-toggler"
+                    type="button"
+                    onClick={((event: React.FormEvent<EventTarget>) => this.toggleHeader())}
                 >
                     <span className="navbar-toggler-icon"/>
                 </button>
-
-                <a className="navbar-brand" href="#">Navbar</a>
-
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Disabled</a>
-                        </li>
+                <div className={'collapse navbar-collapse' + (this.state.toggle ? ' show' : '')} id="navbarNav">
+                    <ul className="navbar-nav">
+                        <NavLink href="/users">Users</NavLink>
                     </ul>
                 </div>
-            </nav>
+                </nav>
         );
     }
 }
