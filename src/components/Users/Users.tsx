@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getUsers } from 'src/actions/users';
 import { USERS_RESET } from 'src/store/usersReducer';
 import BreadCrumb from '../Common/BreadCrumb';
+import Loader from '../Common/Logo';
 
 interface UsersProps {
     dispatch: any;
@@ -59,7 +60,7 @@ class Users extends React.Component<UsersProps> {
         }
 
         if (!fetched && fetching) {
-            return 'Loading...';
+            return <Loader/>;
         }
 
         const data = users.map((user: any) => ({
@@ -68,7 +69,7 @@ class Users extends React.Component<UsersProps> {
         }));
 
         return (
-            <div className="container-fluid">
+            <div>
                 <BreadCrumb page="Users"/>
                 {/* <div className="row">
                     <div className="col-lg-12">

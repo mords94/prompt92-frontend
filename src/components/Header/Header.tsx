@@ -1,5 +1,6 @@
 import * as React from 'react';
 import NavLink from 'src/components/Header/NavLink';
+import './Header.css';
 
 export interface HeaderState {
     toggle: boolean;
@@ -17,7 +18,7 @@ class Header extends React.Component<{}, HeaderState> {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-dark">
                 <a className="navbar-brand" href="#">P92</a>
                 <button 
                     className="navbar-toggler"

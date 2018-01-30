@@ -1,28 +1,16 @@
-.App {
-  text-align: center;
+/**
+ * These file contains all the common css rules for the application.
+ *
+ */
+
+ .page-link:focus {
+  box-shadow: none !important;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button,
+input,
+.btn,
+.breadcrumb,
+.card {
+  border-radius: 0 !important;
 }

@@ -5,6 +5,7 @@ import { UserPayload, saveUser } from '../../actions/users';
 import { USERS_RESET } from 'src/store/usersReducer';
 import { Redirect } from 'react-router';
 import BreadCrumb from 'src/components/Common/BreadCrumb';
+import './NewUser.css';
 
 export interface NewUserStates {
     emailInputs: EmailInput[];
@@ -87,64 +88,69 @@ class NewUser extends React.Component<any, NewUserStates> {
         return (
             <form onSubmit={(event: FormEvent<HTMLFormElement>) => this.handleSubmit(event)}>
                 <BreadCrumb page="New user"/>
-                <div className="form-group">
-                    <label>
-                        Full name
-                        <input 
-                                type="text" 
-                                className="form-control" 
-                                placeholder="Enter a person's name" 
-                                onChange={this.handleChange('userName')} 
-                                value={userName}
-                        />
-                    </label>
-                </div>
+                <div className="card user-form">
+                    <div className="card-body">
+                        <h5 className="card-title">User form</h5>
 
-                <div className="form-group">
-                    <label>
-                        Date of birth
-                        <input 
-                                type="date" 
-                                className="form-control" 
-                                placeholder="Date of birth" 
-                                onChange={this.handleChange('date_of_birth')} 
-                                value={date_of_birth}
-                        />
-                    </label>
-                </div>
-                
-                <div className="form-group">
-                    <button 
-                        type="button"
-                        className="btn btn-default" 
-                        onClick={(event: MouseEvent<HTMLButtonElement>) => this.handleAddEmail()}
-                    >
-                        Add email
-                    </button>
-                </div>
-                {emailInputs.map((input: EmailInput, key: number) => 
-                    <div key={key} className="form-group">
-                        <input 
-                                type="text"
-                                className="form-control" 
-                                placeholder="Type email address here" 
-                                value={input.value as string} 
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    return this.handleEmailChange(event, input.id);
-                                }}
-                        />
+                        <div className="form-group">
+                            <label>
+                                Full name
+                                <input 
+                                        type="text" 
+                                        className="form-control" 
+                                        placeholder="Enter a person's name" 
+                                        onChange={this.handleChange('userName')} 
+                                        value={userName}
+                                />
+                            </label>
+                        </div>
+
+                        <div className="form-group">
+                            <label>
+                                Date of birth
+                                <input 
+                                        type="date" 
+                                        className="form-control" 
+                                        placeholder="Date of birth" 
+                                        onChange={this.handleChange('date_of_birth')} 
+                                        value={date_of_birth}
+                                />
+                            </label>
+                        </div>
+
+                        {emailInputs.map((input: EmailInput, key: number) => 
+                            <div key={key} className="form-group">
+                                <input 
+                                        type="text"
+                                        className="form-control" 
+                                        placeholder="Type email address here" 
+                                        value={input.value as string} 
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                                            return this.handleEmailChange(event, input.id);
+                                        }}
+                                />
+                                <button 
+                                        type="button" 
+                                        className="btn btn-danger mt-2"
+                                        onClick={(event: MouseEvent<HTMLButtonElement>) => this.handleRemove(input.id)}
+                                >
+                                    Remove
+                                </button>
+                            </div>
+                        )}
+                        <button type="submit" disabled={submit} className="btn btn-success card-link">
+                        Save
+                        </button>
                         <button 
-                                type="button" 
-                                className="btn btn-danger mt-2"
-                                onClick={(event: MouseEvent<HTMLButtonElement>) => this.handleRemove(input.id)}
+                            type="button"
+                            className="btn btn-default card-link" 
+                            onClick={(event: MouseEvent<HTMLButtonElement>) => this.handleAddEmail()}
                         >
-                            Remove
+                            Add email
                         </button>
                     </div>
-                )}
-                <button type="submit" disabled={submit} className="btn btn-success">
-                   Save
-                </button>
+                </div>
+                
             </form>
         );
     }

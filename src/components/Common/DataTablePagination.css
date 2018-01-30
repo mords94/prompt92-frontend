@@ -1,0 +1,30 @@
+/**
+ * Data table paginations styles
+ */
+
+ nav.data-table-pagination > ul > .page-item,
+ nav.data-table-pagination > ul > .page-item:first-child,
+ nav.data-table-pagination > ul > .page-item:last-child {
+    background-color: #8d2c89;
+}
+
+nav.data-table-pagination > ul > .page-item > .page-link {
+   background-color: transparent;
+   border: 0;
+   color: white;
+   box-shadow: 0;
+}
+
+nav.data-table-pagination > ul > .page-item:hover {
+    background-color: #ad36a9;
+    color: white;
+ }
+
+nav.data-table-pagination > ul > .page-item.active {
+    background-color: white;
+    color: #8d2c89;
+ }
+
+nav.data-table-pagination > ul > .page-item.active > .page-link {
+    color: #8d2c89;
+ }

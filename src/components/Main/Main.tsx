@@ -6,7 +6,7 @@ import NewUser from 'src/components/Users/NewUser';
 class Main extends React.Component {
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <Switch>
                     <Route exact={true} path="/users" component={Users}/>
                     <Route exact={true} path="/users/new" component={NewUser}/>

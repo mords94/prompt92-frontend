@@ -1,0 +1,17 @@
+/**
+ * New user page styles
+ */
+
+@media only screen and (min-width:768px) {
+    .user-form {
+        width: 400px;
+        margin:auto;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .user-form {
+        width: 100%;
+        margin: 0;
+    }
+}

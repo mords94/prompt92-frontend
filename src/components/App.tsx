@@ -4,6 +4,8 @@ import Main from './Main/Main';
 import '../../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
 import { ToastContainer } from 'react-toastify';
 
 class App extends React.Component {
