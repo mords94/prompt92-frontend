@@ -55,7 +55,6 @@ export const userReducer = (state = userInitialState, action: any) => {
         case POST_USERS_REJECTED:
         case GET_USERS_REJECTED: return {
             ...userInitialState,
-            error: action.payload.error
         };
         case USERS_RESET:
             return userInitialState;

@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 
 export const errorMessage = (error: AxiosError) => {
     const response = error.response;
+    console.log(error);
     if (response && response.status > 300) {
         if (response.status === 422) {
             const detail = response.data.error;
@@ -20,5 +21,7 @@ export const errorMessage = (error: AxiosError) => {
 
         toast.error('Server error.');
         return;
-    }  
+    } else {
+        toast.error(error.message);
+    }
 }; 

@@ -16,8 +16,9 @@ export const getUsers = (page: number = 1) => (dispatch: any) => {
     return api.get('/api/users?page=' + page)
     .then((response: AxiosResponse<any>) => {
         dispatch({type: GET_USERS_FULFILLED, payload: response.data});
-    }).catch((response: AxiosResponse) => {
-        dispatch({type: GET_USERS_REJECTED, payload: response.data});
+    }).catch((response: AxiosError) => {
+        dispatch({type: GET_USERS_REJECTED, payload: response});
+        errorMessage(response);
     });
 };
 
