@@ -1,5 +1,6 @@
 import * as React from 'react';
 import DataTablePaginator from 'src/components/Common/DataTablePaginator';
+import { DataTablePaginatorProps } from './DataTablePaginator';
 
 export interface DataTableHeader {
     id: string;
@@ -9,14 +10,28 @@ export interface DataTableHeader {
 export interface DataTableProps {
     headers: DataTableHeader[];
     data: Object[];
+    onNextPage: any;
+    onPrevPage: any;
+    onChangePage: any;
+    paginatorProps?: Partial<DataTablePaginatorProps>;
+    pagination?: boolean;
+    loaded?: false;
 }
 
 class DataTable extends React.Component<DataTableProps> {
     render() {
-        const {headers, data} = this.props;
+        const {headers, data, paginatorProps, pagination, onPrevPage, onNextPage, onChangePage} = this.props;
+
         return (
-            <div className="container-fluid">
-            <DataTablePaginator/>
+            <div className="">
+            {pagination && 
+                <DataTablePaginator 
+                    {...paginatorProps}
+                    onNextPage={onNextPage} 
+                    onPrevPage={onPrevPage}
+                    onChangePage={onChangePage}
+                />
+            }
                 <div className="table-responsive">
                     <table className="table table-striped">
                         <thead className="thead-dark">

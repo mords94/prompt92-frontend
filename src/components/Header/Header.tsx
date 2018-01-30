@@ -18,7 +18,7 @@ class Header extends React.Component<{}, HeaderState> {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">Navbar</a>
+                <a className="navbar-brand" href="#">P92</a>
                 <button 
                     className="navbar-toggler"
                     type="button"
@@ -26,9 +26,10 @@ class Header extends React.Component<{}, HeaderState> {
                 >
                     <span className="navbar-toggler-icon"/>
                 </button>
-                <div className={'collapse navbar-collapse' + (this.state.toggle ? ' show' : '')} id="navbarNav">
+                <div className={'collapse navbar-collapse' + (this.state.toggle ? ' show' : '')}>
                     <ul className="navbar-nav">
                         <NavLink href="/users">Users</NavLink>
+                        <NavLink href="/users/new">New user</NavLink>
                     </ul>
                 </div>
                 </nav>

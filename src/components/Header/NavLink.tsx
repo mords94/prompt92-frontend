@@ -11,8 +11,13 @@ class NavLink extends React.Component<NavLinkProps> {
         const {href, children} = this.props;
 
         return (
-            <li className="nav-item active">
-                <Link to={href}>{children}</Link>
+            <li className="nav-item">
+                <Link 
+                    className={'nav-link ' + (window.location.pathname === href ? ' active' : '')} 
+                    to={href}
+                >
+                    {children}
+                </Link>
             </li>
         );
     }

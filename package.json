@@ -6,7 +6,9 @@
     "@types/react-bootstrap": "^0.32.1",
     "@types/react-hot-loader": "^3.0.5",
     "@types/react-redux": "^5.0.14",
+    "@types/react-transition-group": "^2.0.6",
     "@types/redux-logger": "^3.0.5",
+    "axios": "^0.17.1",
     "history": "^4.7.2",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
@@ -15,6 +17,7 @@
     "react-redux": "^5.0.6",
     "react-router-redux": "^4.0.8",
     "react-scripts-ts": "2.13.0",
+    "react-toastify": "^3.3.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "webpack-hot-middleware": "^2.21.0"

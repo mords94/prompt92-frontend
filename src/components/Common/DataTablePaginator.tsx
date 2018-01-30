@@ -1,49 +1,51 @@
 import * as React from 'react';
+import { MouseEvent } from 'react';
 
-interface DataTablePaginatorProps {
-    current_page: number;
-    total: number;
-    first_item: number;
-    last_item: number;
-    last_page: number;
-    per_page: number;
+export interface DataTablePaginatorProps {
+    current_page?: number;
+    total?: number;
+    first_item?: number;
+    last_item?: number;
+    last_page?: number;
+    per_page?: number;
+    onPrevPage: any;
+    onNextPage: any;
+    onChangePage: any;
 }
 
-class DataTablePaginator extends React.Component<any> {
-
-    public static defaultProps: DataTablePaginatorProps = {
-        current_page: 1,
-        total: 0,
-        first_item: 0,
-        last_item: 0,
-        last_page: 1,
-        per_page: 15,
-    };
-
+class DataTablePaginator extends React.Component<DataTablePaginatorProps> {
     renderNavigation() {
-            const {current_page, last_page} = this.props;
+            const {current_page, last_page, onPrevPage, onNextPage, onChangePage} = this.props;
             return (
-                    <div>
-                        <a href="#" className="btn">Prev</a>
-                            {Array.from({length: last_page}, (v: number, k: number) => 
-                                <a href="#" className={'btn' + (current_page === k + 1 ? ' btn-primary' : '')}>
-                                    {k + 1}
+                <nav aria-label="Pagination">
+                <ul className="pagination">
+                    <li className="page-item"><a href="#" className="page-link" onClick={onPrevPage}>Prev</a></li>
+                        {Array.from({length: last_page || 0}, (_, key: number) => 
+                            <li className="page-item" key={key}>
+                                <a 
+                                    href="#"
+                                    onClick={(event: MouseEvent<HTMLAnchorElement>) => onChangePage(key + 1)}
+                                    className={'btn btn-' + (current_page === key + 1 ? 'primary' : 'default')}
+                                >
+                                    {key + 1}
                                 </a>
-                            )}
-                        <a href="#" className="btn">Next</a>
-                    </div>
-                    );
+                            </li>
+                        )}
+                    <li className="page-item"><a href="#" className="page-link" onClick={onNextPage}>Next</a></li>
+                    </ul>
+                </nav>
+                );
     }
     
     render() {
         const {current_page, total, last_page, per_page} = this.props;
         return (
             <div className="row">
-                <div className="col-lg-6">
-                    Page {current_page} of {last_page} ({per_page} of total {total})
+                <div className="col-lg-12">
+                    {this.renderNavigation()} 
                 </div>
-                <div className="col-lg-6 text-right">
-                    {this.renderNavigation()}
+                <div className="col-lg-12">
+                    Page {current_page} of {last_page} ({per_page} of total {total} items)
                 </div>
             </div>
         );
